@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Properties</title>
+    <style>
+      * {
+        font-family: "Poppins", sans-serif;
+      }
+      .home {
+        text-decoration: none;
+        color: #000000;
+      }
+      .home:hover {
+        background-color: #000000;
+        color: white;
+        padding: 8px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 3px black;
+      }
+      .schedule {
+        margin-top: 10px;
+      }
+      .schedule:hover {
+        color: #f35727;
+      }
+      .submit {
+        height: 30px;
+        border-radius: 10px;
+        color: #f35727;
+      }
+      .submit:hover {
+        background-color: #f35727;
+        color: #ffffff;
+      }
+      .error {
+        color: red;
+        font-size: 15px;
+        margin-top: 5px;
+        display: block;
+        text-align: center;
+      }
+      .schedule {
+        margin-top: 10px;
+      }
+      .schedule:hover {
+        color: #f35727;
+      }
+      .propertiesschedule {
+        background-color: #000000;
+        color: #ffffff;
+        border-radius: 80px;
+        text-decoration: none;
+        padding: 10px;
+      }
+      .propertiesschedule:hover {
+        background-color: #f35525;
+      }
+      /* Loader wrapper styles */
+      #loader-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 100; /* Ensure it's on top of other content */
+      }
+
+      /* Spinner animation */
+      .loader {
+        border: 8px solid #f3f3f3; /* Light grey */
+        border-top: 8px solid #f35727; /* Blue */
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite; /* Apply the spinning animation */
+      }
+
+      /* CSS animation keyframes */
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Class to hide content */
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="content" class="hidden">
+    <!-- header -->
+    <div
+      style="
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+      "
+    >
+      <div style="display: flex; justify-content: center">
+        <!-- <p style="font-size: 30px; font-weight: bold">VILLA</p> -->
+        <img
+          src="./project_images/Villa_logo.png"
+          alt=""
+          style="height: 130px; width: 150px"
+        />
+      </div>
+      <div
+        style="
+          display: flex;
+          justify-content: center;
+          gap: 50px;
+          align-items: center;
+        "
+      >
+        <a href="home.html" class="home">Home</a>
+        <a href="Properties.html" class="home">Properties</a>
+        <a href="propertydetails.html" class="home">Property Details</a>
+        <a href="Contact_us.html" class="home">Contact Us</a>
+
+        <a
+          href=""
+          style="
+            height: 40px;
+            width: 180px;
+            background-color: #000000;
+            color: #ffffff;
+            border-radius: 80px;
+            display: grid;
+            grid-template-columns: 0.2fr 1fr;
+            text-decoration: none;
+            gap: 12px;
+          "
+        >
+          <div
+            style="
+              background-color: #f35727;
+              height: 40px;
+              border-radius: 50%;
+              width: 40px;
+            "
+          ></div>
+          <p class="schedule">Schedule a visit</p>
+        </a>
+      </div>
+    </div>
+
+    <div
+      style="
+        background-image: url(./project_images/page-heading-bg.jpg);
+        padding: 80px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        /* filter: brightness(0); */
+        text-align: center;
+      "
+    >
+      <a
+        href=""
+        style="
+          text-decoration: none;
+          background-color: #ffffff;
+          padding: 10px;
+          color: #000000;
+        "
+        >HOME/ PROPERTIES</a
+      >
+
+      <h1 style="color: #ffffff; text-align: center">PROPERTIES</h1>
+    </div>
+
+    <!-- Buttons -->
+    <div
+      style="
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        padding: 80px;
+      "
+    >
+      <button
+        style="
+          width: 120px;
+          height: 45px;
+          border-radius: 5px;
+          background-color: #f35525;
+          color: #ffffff;
+          font-size: 15px;
+          font-weight: bold;
+          border: none;
+        "
+      >
+        Show All
+      </button>
+      <button
+        style="
+          width: 120px;
+          height: 45px;
+          border-radius: 5px;
+          background-color: #000000;
+          color: #ffffff;
+          font-size: 15px;
+          font-weight: bold;
+          border: none;
+        "
+      >
+        Appartment
+      </button>
+      <button
+        style="
+          width: 120px;
+          height: 45px;
+          border-radius: 5px;
+          background-color: #000000;
+          color: #ffffff;
+          font-size: 15px;
+          font-weight: bold;
+          border: none;
+        "
+      >
+        Villa House
+      </button>
+      <button
+        style="
+          width: 120px;
+          height: 45px;
+          border-radius: 5px;
+          background-color: #000000;
+          color: #ffffff;
+          font-size: 15px;
+          font-weight: bold;
+          border: none;
+        "
+      >
+        Penthouse
+      </button>
+    </div>
+
+    <!-- Properties -->
+    <div
+      style="
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding-top: 40px;
+        padding-left: 80px;
+        padding-right: 80px;
+        gap: 20px;
+      "
+    >
+      <!-- 1st img -->
+      <div
+        style="
+          background-color: #fafafa;
+          border-radius: 10px;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 30px;
+        "
+      >
+        <img
+          src="./project_images/property-01.jpg"
+          alt="Image is not found"
+          style="border-radius: 10px"
+        />
+
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+          "
+        >
+          <p
+            style="
+              background-color: #fbd9cf;
+              padding: 8px;
+              border-radius: 5px;
+              font-size: 16px;
+              font-weight: bold;
+            "
+          >
+            Luxury Villa
+          </p>
+
+          <p style="font-size: 20px; color: #f35525; font-weight: bold">
+            $2.264.000
+          </p>
+        </div>
+
+        <a
+          href=""
+          style="
+            text-decoration: none;
+            color: #000000;
+            font-size: 20px;
+            font-weight: bold;
+          "
+        >
+          18 New Street Miami, OR 97219
+        </a>
+
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+          "
+        >
+          <p>Bedrooms: <span style="font-weight: bold"> 8</span></p>
+          <p>Bathrooms: <span style="font-weight: bold"> 8</span></p>
+          <p>Area:<span style="font-weight: bold"> 545m2</span></p>
+          <p>Floor:<span style="font-weight: bold"> 3</span></p>
+          <p>Parking:<span style="font-weight: bold"> 6 spots</span></p>
+        </div>
+
+        <!-- for line -->
+        <div style="height: 1px; background-color: #e9e9e9"></div>
+
+        <!-- Schedule button -->
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 25px;
+          "
+        >
+          <a href="" class="propertiesschedule"> Schedule a visit </a>
+        </div>
+      </div>
+      <!-- 2nd img -->
+      <div
+        style="
+          background-color: #fafafa;
+          border-radius: 10px;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 30px;
+        "
+      >
+        <img
+          src="./project_images/property-02.jpg"
+          alt="Image is not found"
+          style="border-radius: 10px"
+        />
+
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+          "
+        >
+          <p
+            style="
+              background-color: #fbd9cf;
+              padding: 8px;
+              border-radius: 5px;
+              font-size: 16px;
+              font-weight: bold;
+            "
+          >
+            Luxury Villa
+          </p>
+
+          <p style="font-size: 20px; color: #f35525; font-weight: bold">
+            $1.180.000
+          </p>
+        </div>
+
+        <a
+          href=""
+          style="
+            text-decoration: none;
+            color: #000000;
+            font-size: 20px;
+            font-weight: bold;
+          "
+        >
+          54 Mid Street Florida, OR 27001
+        </a>
+
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+          "
+        >
+          <p>Bedrooms: <span style="font-weight: bold"> 6</span></p>
+          <p>Bathrooms: <span style="font-weight: bold"> 5</span></p>
+          <p>Area:<span style="font-weight: bold"> 450m2</span></p>
+          <p>Floor:<span style="font-weight: bold"> 3</span></p>
+          <p>Parking:<span style="font-weight: bold"> 8 spots</span></p>
+        </div>
+
+        <!-- for line -->
+        <div style="height: 1px; background-color: #e9e9e9"></div>
+
+        <!-- Schedule button -->
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 25px;
+          "
+        >
+          <a href="" class="propertiesschedule"> Schedule a visit </a>
+        </div>
+      </div>
+
+      <!-- 3rd img -->
+      <div
+        style="
+          background-color: #fafafa;
+          border-radius: 10px;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 30px;
+        "
+      >
+        <img
+          src="./project_images/property-03.jpg"
+          alt="Image is not found"
+          style="border-radius: 10px"
+        />
+
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+          "
+        >
+          <p
+            style="
+              background-color: #fbd9cf;
+              padding: 8px;
+              border-radius: 5px;
+              font-size: 16px;
+              font-weight: bold;
+            "
+          >
+            Luxury Villa
+          </p>
+
+          <p style="font-size: 20px; color: #f35525; font-weight: bold">
+            $1.460.000
+          </p>
+        </div>
+
+        <a
+          href=""
+          style="
+            text-decoration: none;
+            color: #000000;
+            font-size: 20px;
+            font-weight: bold;
+          "
+        >
+          26 Old Street Miami, OR 38540
+        </a>
+
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+          "
+        >
+          <p>Bedrooms: <span style="font-weight: bold"> 5</span></p>
+          <p>Bathrooms: <span style="font-weight: bold"> 4</span></p>
+          <p>Area:<span style="font-weight: bold"> 225m2</span></p>
+          <p>Floor:<span style="font-weight: bold"> 3</span></p>
+          <p>Parking:<span style="font-weight: bold"> 10 spots</span></p>
+        </div>
+
+        <!-- for line -->
+        <div style="height: 1px; background-color: #e9e9e9"></div>
+
+        <!-- Schedule button -->
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 25px;
+          "
+        >
+          <a href="" class="propertiesschedule"> Schedule a visit </a>
+        </div>
+      </div>
+      <!-- 4rth img -->
+      <div
+        style="
+          background-color: #fafafa;
+          border-radius: 10px;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 30px;
+        "
+      >
+        <img
+          src="./project_images/property-04.jpg"
+          alt="Image is not found"
+          style="border-radius: 10px"
+        />
+
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+          "
+        >
+          <p
+            style="
+              background-color: #fbd9cf;
+              padding: 8px;
+              border-radius: 5px;
+              font-size: 16px;
+              font-weight: bold;
+            "
+          >
+            Luxury Villa
+          </p>
+
+          <p style="font-size: 20px; color: #f35525; font-weight: bold">
+            $2.264.000
+          </p>
+        </div>
+
+        <a
+          href=""
+          style="
+            text-decoration: none;
+            color: #000000;
+            font-size: 20px;
+            font-weight: bold;
+          "
+        >
+          18 New Street Miami, OR 97219
+        </a>
+
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+          "
+        >
+          <p>Bedrooms: <span style="font-weight: bold"> 8</span></p>
+          <p>Bathrooms: <span style="font-weight: bold"> 8</span></p>
+          <p>Area:<span style="font-weight: bold"> 545m2</span></p>
+          <p>Floor:<span style="font-weight: bold"> 3</span></p>
+          <p>Parking:<span style="font-weight: bold"> 6 spots</span></p>
+        </div>
+
+        <!-- for line -->
+        <div style="height: 1px; background-color: #e9e9e9"></div>
+
+        <!-- Schedule button -->
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 25px;
+          "
+        >
+          <a href="" class="propertiesschedule"> Schedule a visit </a>
+        </div>
+      </div>
+      <!-- 5th img -->
+      <div
+        style="
+          background-color: #fafafa;
+          border-radius: 10px;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 30px;
+        "
+      >
+        <img
+          src="./project_images/property-05.jpg"
+          alt="Image is not found"
+          style="border-radius: 10px"
+        />
+
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+          "
+        >
+          <p
+            style="
+              background-color: #fbd9cf;
+              padding: 8px;
+              border-radius: 5px;
+              font-size: 16px;
+              font-weight: bold;
+            "
+          >
+            Luxury Villa
+          </p>
+
+          <p style="font-size: 20px; color: #f35525; font-weight: bold">
+            $1.180.000
+          </p>
+        </div>
+
+        <a
+          href=""
+          style="
+            text-decoration: none;
+            color: #000000;
+            font-size: 20px;
+            font-weight: bold;
+          "
+        >
+          54 Mid Street Florida, OR 27001
+        </a>
+
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+          "
+        >
+          <p>Bedrooms: <span style="font-weight: bold"> 6</span></p>
+          <p>Bathrooms: <span style="font-weight: bold"> 5</span></p>
+          <p>Area:<span style="font-weight: bold"> 450m2</span></p>
+          <p>Floor:<span style="font-weight: bold"> 3</span></p>
+          <p>Parking:<span style="font-weight: bold"> 8 spots</span></p>
+        </div>
+
+        <!-- for line -->
+        <div style="height: 1px; background-color: #e9e9e9"></div>
+
+        <!-- Schedule button -->
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 25px;
+          "
+        >
+          <a href="" class="propertiesschedule"> Schedule a visit </a>
+        </div>
+      </div>
+
+      <!-- 6th img -->
+      <div
+        style="
+          background-color: #fafafa;
+          border-radius: 10px;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 30px;
+        "
+      >
+        <img
+          src="./project_images/property-06.jpg"
+          alt="Image is not found"
+          style="border-radius: 10px"
+        />
+
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+          "
+        >
+          <p
+            style="
+              background-color: #fbd9cf;
+              padding: 8px;
+              border-radius: 5px;
+              font-size: 16px;
+              font-weight: bold;
+            "
+          >
+            Luxury Villa
+          </p>
+
+          <p style="font-size: 20px; color: #f35525; font-weight: bold">
+            $1.460.000
+          </p>
+        </div>
+
+        <a
+          href=""
+          style="
+            text-decoration: none;
+            color: #000000;
+            font-size: 20px;
+            font-weight: bold;
+          "
+        >
+          26 Old Street Miami, OR 38540
+        </a>
+
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+          "
+        >
+          <p>Bedrooms: <span style="font-weight: bold"> 5</span></p>
+          <p>Bathrooms: <span style="font-weight: bold"> 4</span></p>
+          <p>Area:<span style="font-weight: bold"> 225m2</span></p>
+          <p>Floor:<span style="font-weight: bold"> 3</span></p>
+          <p>Parking:<span style="font-weight: bold"> 10 spots</span></p>
+        </div>
+
+        <!-- for line -->
+        <div style="height: 1px; background-color: #e9e9e9"></div>
+
+        <!-- Schedule button -->
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 25px;
+          "
+        >
+          <a href="" class="propertiesschedule"> Schedule a visit </a>
+        </div>
+      </div>
+
+      <!-- 1st img -->
+      <div
+        style="
+          background-color: #fafafa;
+          border-radius: 10px;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 30px;
+        "
+      >
+        <img
+          src="./project_images/property-01.jpg"
+          alt="Image is not found"
+          style="border-radius: 10px"
+        />
+
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+          "
+        >
+          <p
+            style="
+              background-color: #fbd9cf;
+              padding: 8px;
+              border-radius: 5px;
+              font-size: 16px;
+              font-weight: bold;
+            "
+          >
+            Luxury Villa
+          </p>
+
+          <p style="font-size: 20px; color: #f35525; font-weight: bold">
+            $2.264.000
+          </p>
+        </div>
+
+        <a
+          href=""
+          style="
+            text-decoration: none;
+            color: #000000;
+            font-size: 20px;
+            font-weight: bold;
+          "
+        >
+          18 New Street Miami, OR 97219
+        </a>
+
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+          "
+        >
+          <p>Bedrooms: <span style="font-weight: bold"> 8</span></p>
+          <p>Bathrooms: <span style="font-weight: bold"> 8</span></p>
+          <p>Area:<span style="font-weight: bold"> 545m2</span></p>
+          <p>Floor:<span style="font-weight: bold"> 3</span></p>
+          <p>Parking:<span style="font-weight: bold"> 6 spots</span></p>
+        </div>
+
+        <!-- for line -->
+        <div style="height: 1px; background-color: #e9e9e9"></div>
+
+        <!-- Schedule button -->
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 25px;
+          "
+        >
+          <a href="" class="propertiesschedule"> Schedule a visit </a>
+        </div>
+      </div>
+      <!-- 2nd img -->
+      <div
+        style="
+          background-color: #fafafa;
+          border-radius: 10px;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 30px;
+        "
+      >
+        <img
+          src="./project_images/property-02.jpg"
+          alt="Image is not found"
+          style="border-radius: 10px"
+        />
+
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+          "
+        >
+          <p
+            style="
+              background-color: #fbd9cf;
+              padding: 8px;
+              border-radius: 5px;
+              font-size: 16px;
+              font-weight: bold;
+            "
+          >
+            Luxury Villa
+          </p>
+
+          <p style="font-size: 20px; color: #f35525; font-weight: bold">
+            $1.180.000
+          </p>
+        </div>
+
+        <a
+          href=""
+          style="
+            text-decoration: none;
+            color: #000000;
+            font-size: 20px;
+            font-weight: bold;
+          "
+        >
+          54 Mid Street Florida, OR 27001
+        </a>
+
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+          "
+        >
+          <p>Bedrooms: <span style="font-weight: bold"> 6</span></p>
+          <p>Bathrooms: <span style="font-weight: bold"> 5</span></p>
+          <p>Area:<span style="font-weight: bold"> 450m2</span></p>
+          <p>Floor:<span style="font-weight: bold"> 3</span></p>
+          <p>Parking:<span style="font-weight: bold"> 8 spots</span></p>
+        </div>
+
+        <!-- for line -->
+        <div style="height: 1px; background-color: #e9e9e9"></div>
+
+        <!-- Schedule button -->
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 25px;
+          "
+        >
+          <a href="" class="propertiesschedule"> Schedule a visit </a>
+        </div>
+      </div>
+
+      <!-- 3rd img -->
+      <div
+        style="
+          background-color: #fafafa;
+          border-radius: 10px;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 30px;
+        "
+      >
+        <img
+          src="./project_images/property-03.jpg"
+          alt="Image is not found"
+          style="border-radius: 10px"
+        />
+
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+          "
+        >
+          <p
+            style="
+              background-color: #fbd9cf;
+              padding: 8px;
+              border-radius: 5px;
+              font-size: 16px;
+              font-weight: bold;
+            "
+          >
+            Luxury Villa
+          </p>
+
+          <p style="font-size: 20px; color: #f35525; font-weight: bold">
+            $1.460.000
+          </p>
+        </div>
+
+        <a
+          href=""
+          style="
+            text-decoration: none;
+            color: #000000;
+            font-size: 20px;
+            font-weight: bold;
+          "
+        >
+          26 Old Street Miami, OR 38540
+        </a>
+
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+          "
+        >
+          <p>Bedrooms: <span style="font-weight: bold"> 5</span></p>
+          <p>Bathrooms: <span style="font-weight: bold"> 4</span></p>
+          <p>Area:<span style="font-weight: bold"> 225m2</span></p>
+          <p>Floor:<span style="font-weight: bold"> 3</span></p>
+          <p>Parking:<span style="font-weight: bold"> 10 spots</span></p>
+        </div>
+
+        <!-- for line -->
+        <div style="height: 1px; background-color: #e9e9e9"></div>
+
+        <!-- Schedule button -->
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 25px;
+          "
+        >
+          <a href="" class="propertiesschedule"> Schedule a visit </a>
+        </div>
+      </div>
+    </div>
+
+    <div style="background-color: #000000; padding: 30px">
+      <p style="color: #ffffff; text-align: center">
+        Copyright © 2048 Villa Agency Co., Ltd. All rights reserved. Design:
+        <a href="" style="text-decoration: none; color: #ffffff">TemplateMo</a>
+      </p>
+    </div>
+
+    <div id="loader-wrapper">
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <img
+          src="https://i.postimg.cc/6p8ncRS6/Villa-logo.png"
+          width="150px"
+          height="150px"
+          alt=""
+        />
+
+        <div class="loader" style="margin-top: -10px"></div>
+      </div>
+    </div>
+
+    <script>
+      window.onload = function () {
+        setTimeout(function () {
+          document.getElementById("loader-wrapper").style.display = "none";
+          document.getElementById("content").classList.remove("hidden");
+        }, 3000);
+      };
+    </script>
+  </body>
+</html>
