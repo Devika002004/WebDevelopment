@@ -1,0 +1,2871 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+    <style>
+      * {
+        font-family: "Poppins", sans-serif;
+      }
+      .home {
+        text-decoration: none;
+        color: #000000;
+      }
+      .home:hover {
+        background-color: #000000;
+        color: white;
+        padding: 8px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 3px black;
+      }
+      .schedule {
+        margin-top: 10px;
+      }
+      .schedule:hover {
+        color: #f35727;
+      }
+      .submit {
+        height: 30px;
+        border-radius: 10px;
+        color: #f35727;
+      }
+      .submit:hover {
+        background-color: #f35727;
+        color: #ffffff;
+      }
+      .hidden {
+        display: none;
+      }
+      .error {
+        color: #ff0000;
+        font-size: 15px;
+        margin-top: 5px;
+        display: block;
+        text-align: center;
+      }
+      .paymentbutton {
+        color: #f35727;
+        border-radius: 10px;
+        width: 100px;
+        font-weight: bold;
+        height: 35px;
+        border: none;
+      }
+      .paymentbutton:hover {
+        color: #ffffff;
+        background-color: #008000;
+      }
+      .cancelbutton {
+        color: #f35727;
+        border-radius: 10px;
+        width: 100px;
+        font-weight: bold;
+        height: 35px;
+        border: none;
+      }
+      .cancelbutton:hover {
+        color: #ffffff;
+        background-color: #ff0000;
+      }
+
+      #loader {
+        background-color: #f9f9f9;
+        padding: 20px;
+        text-align: center;
+        font-weight: bold;
+        border: 2px dashed #ccc;
+      }
+      /* .property-card {
+        display: inline-block;
+        width: 200px;
+        margin: 10px;
+        text-align: center;
+        cursor: pointer;
+      }
+      .property-card img {
+        width: 200px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 20px;
+        border: 2px solid transparent;
+      }
+      .property-card.selected img {
+        border-color: #f3553b;
+      }
+      #flatGallery img {
+        width: 100px;
+        height: 80px;
+        margin: 5px;
+        border: 2px solid transparent;
+        cursor: pointer;
+      }
+      #flatGallery img.selected {
+        border-color: #ff4081;
+      }
+      #flatDetails {
+        background: #fff;
+        padding: 10px;
+        border: 1px solid #ccc;
+      } */
+
+      .property-card img {
+        width: 500px;
+        height: 300px;
+        border-radius: 8px;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: border 0.3s;
+      }
+      .property-card img:hover {
+        border-color: #00bfa5;
+      }
+      #gallery {
+        margin-top: 20px;
+      }
+      #gallery img {
+        width: 350px;
+        height: 250px;
+        border: 2px solid transparent;
+        border-radius: 6px;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+      #gallery img:hover {
+        border-color: #ff4081;
+      }
+      #details {
+        margin-top: 20px;
+        background: #fff;
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+      }
+      #details img {
+        width: 100%;
+        max-width: 320px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+      }
+      img.selected {
+        border-color: #ff4081 !important;
+        box-shadow: 0 0 8px rgba(255, 64, 129, 0.6);
+      }
+      /* label {
+        display: block;
+        margin: 8px 0 4px;
+      } */
+      /* Loader wrapper styles */
+      #loader-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 100; /* Ensure it's on top of other content */
+      }
+
+      /* Spinner animation */
+      .loader {
+        border: 8px solid #f3f3f3; /* Light grey */
+        border-top: 8px solid #f35727; /* Blue */
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite; /* Apply the spinning animation */
+      }
+
+      /* CSS animation keyframes */
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Class to hide content */
+      .hidden {
+        display: none;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body class="content" class="hidden">
+    <!-- header -->
+    <div
+      style="
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+      "
+    >
+      <div style="display: flex; justify-content: center">
+        <!-- <p style="font-size: 30px; font-weight: bold">VILLA</p> -->
+        <img
+          src="./project_images/Villa_logo.png"
+          alt=""
+          style="height: 130px; width: 150px"
+        />
+      </div>
+      <div
+        style="
+          display: flex;
+          justify-content: center;
+          gap: 50px;
+          align-items: center;
+        "
+      >
+        <a href="home.html" class="home">Home</a>
+        <a href="Properties.html" class="home">Properties</a>
+        <a href="propertydetails.html" class="home">Property Details</a>
+        <a href="Contact_us.html" class="home">Contact Us</a>
+
+        <a
+          href=""
+          style="
+            height: 40px;
+            width: 180px;
+            background-color: #000000;
+            color: #ffffff;
+            border-radius: 80px;
+            display: grid;
+            grid-template-columns: 0.2fr 1fr;
+            text-decoration: none;
+            gap: 12px;
+          "
+        >
+          <div
+            style="
+              background-color: #f35727;
+              height: 40px;
+              border-radius: 50%;
+              width: 40px;
+            "
+          ></div>
+          <p class="schedule">Schedule a visit</p>
+        </a>
+      </div>
+    </div>
+
+    <div
+      style="
+        background-image: url(./project_images/page-heading-bg.jpg);
+        padding: 80px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        /* filter: brightness(0); */
+        text-align: center;
+      "
+    >
+      <a
+        href=""
+        style="
+          text-decoration: none;
+          background-color: #ffffff;
+          padding: 10px;
+          color: #000000;
+        "
+        >HOME/ CONTACT US</a
+      >
+
+      <h1 style="color: #ffffff; text-align: center">CONTACT US</h1>
+    </div>
+
+    <!-- grid divide -->
+
+    <div
+      style="
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 80px;
+        gap: 50px;
+      "
+    >
+      <div>
+        <p
+          style="
+            height: 2px;
+            color: #f3553b;
+            font-weight: bold;
+            font-size: 14px;
+          "
+        >
+          <b>|</b> CONTACT US
+        </p>
+        <p style="font-size: 45px; font-weight: bold">
+          Get In Touch<br />
+          With Our Agents
+        </p>
+
+        <p style="line-height: 23px; text-align: justify">
+          You want to know more about the buying process, our team is here to
+          assist you every step of the way. From pricing and floor plans to site
+          visits and investment guidance, we provide complete support tailored
+          to your needs.
+        </p>
+        <p style="line-height: 23px; text-align: justify">
+          Simply fill out the form below, give us a call, or drop us an email –
+          and one of our property experts will get back to you quickly. Your
+          dream home is closer than you think, and we’re excited to help you
+          make it a reality.
+        </p>
+
+        <br />
+      </div>
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <div
+          style="
+            border-radius: 10px;
+            box-shadow: 2px 2px 8px 2px #d4d3d3;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 20px;
+            gap: 18px;
+            width: 300px;
+            margin-bottom: 30px;
+          "
+        >
+          <img src="./project_images/phone-icon.png" alt="Image is not found" />
+          <p style="color: #b7b6b6">
+            <span style="font-size: 25px; font-weight: bold; color: #000000"
+              >010-020-0340</span
+            ><br />
+            Phone Number
+          </p>
+        </div>
+
+        <div
+          style="
+            border-radius: 10px;
+            box-shadow: 2px 2px 8px 2px #d4d3d3;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 20px;
+            gap: 18px;
+            width: 300px;
+          "
+        >
+          <img src="./project_images/email-icon.png" alt="Image is not found" />
+          <p style="color: #b7b6b6">
+            <span style="font-size: 25px; font-weight: bold; color: #000000"
+              >info@villa.co</span
+            ><br />
+            Business Email
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!--  Deatils Form -->
+
+    <div
+      style="
+        padding-top: 40px;
+        padding-bottom: 80px;
+        padding-left: 80px;
+        padding-right: 80px;
+      "
+    >
+      <div
+        style="
+          border-radius: 10px;
+          box-shadow: 2px 2px 8px 2px #d4d3d3;
+          padding: 30px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          gap: 45px;
+        "
+      >
+        <div>
+          <p
+            style="
+              font-size: 30px;
+              font-weight: bold;
+              text-align: center;
+              color: #f3553b;
+            "
+          >
+            Get In Touch<br />
+            With Our Agents
+          </p>
+        </div>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+          "
+        >
+          <!-- First name -->
+          <div>
+            <label>First Name: </label>
+            <input
+              id="firstName"
+              type="text"
+              placeholder="   Enter your first name"
+              style="
+                width: 200px;
+                height: 40px;
+                border-radius: 10px;
+                margin-bottom: 8px;
+                border: none;
+                background-color: #f4f4f4;
+              "
+            />
+            <span
+              style="color: #ff0000"
+              class="error"
+              id="errorFirstName"
+            ></span>
+          </div>
+
+          <!-- Last Name -->
+          <div>
+            <label>Last Name: </label>
+            <input
+              type="lastname"
+              placeholder="   Enter your last name"
+              style="
+                width: 200px;
+                height: 40px;
+                border-radius: 10px;
+                margin-bottom: 8px;
+                border: none;
+                background-color: #f4f4f4;
+              "
+              id="lastName"
+            />
+            <span
+              style="color: #ff0000"
+              class="error"
+              id="errorLastname"
+            ></span>
+          </div>
+        </div>
+
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+          "
+        >
+          <!-- Mobile number -->
+          <div>
+            <label>Mobile No: </label>
+            <input
+              type="number"
+              placeholder="    Enter your mobile number"
+              style="
+                width: 200px;
+                height: 40px;
+                border-radius: 10px;
+                /* margin-bottom: 6px; */
+                border: none;
+                background-color: #f4f4f4;
+              "
+              id="mobile"
+            />
+            <span style="color: #ff0000" class="error" id="errorMobile"></span>
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label>Email Id : </label>
+            <input
+              type="email"
+              placeholder="    Enter your email"
+              style="
+                width: 200px;
+                height: 40px;
+                border-radius: 10px;
+                margin-bottom: 8px;
+                border: none;
+                background-color: #f4f4f4;
+              "
+              id="email"
+            />
+            <span style="color: #ff0000" class="error" id="errorEmail"></span>
+          </div>
+        </div>
+        <!-- <h2 style="text-align: center">Select Property Type</h2>
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+          "
+        >
+          <div id="propertyOptions">
+            <div class="property-card" data-type="apartment">
+              <img src="./project_images/appartment.jpeg" alt="Apartment" />
+              <p>Apartment</p>
+            </div>
+            <div class="property-card" data-type="villa">
+              <img src="./project_images/./villa.jpg" alt="Villa" />
+              <p>Villa</p>
+            </div>
+          </div>
+        </div> -->
+
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+          "
+        >
+          <div id="floorSection" style="display: none">
+            <h3>Select Floor</h3>
+            <select
+              id="floorSelect"
+              style="
+                width: 200px;
+                height: 40px;
+                border-radius: 10px;
+                margin-bottom: 8px;
+                border: none;
+                background-color: #f4f4f4;
+              "
+            ></select>
+          </div>
+          <div id="flatSection" style="display: none">
+            <h3>Select Number of Flats</h3>
+            <select
+              id="flatCountSelect"
+              style="
+                width: 200px;
+                height: 40px;
+                border-radius: 10px;
+                margin-bottom: 8px;
+                border: none;
+                background-color: #f4f4f4;
+              "
+            ></select>
+            <div id="flatGallery"></div>
+          </div>
+
+          <div id="flatDetailsSection" style="display: none">
+            <h3>Flat Details</h3>
+            <div id="flatDetails"></div>
+            <button
+              id="visitBtn"
+              style="
+                width: 200px;
+                height: 40px;
+                border-radius: 10px;
+                margin-bottom: 8px;
+                border: none;
+                background-color: #f4f4f4;
+              "
+            >
+              Visit & Generate Invoice
+            </button>
+          </div>
+        </div>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+          "
+        >
+          <!-- Villa select -->
+          <div>
+            <label for="">Select Property: </label>
+            <select
+              name=""
+              style="
+                width: 200px;
+                height: 40px;
+                border-radius: 10px;
+                margin-bottom: 8px;
+                border: none;
+                background-color: #f4f4f4;
+              "
+              id="villaSelect"
+              onchange="updatePrice()"
+            >
+              <option value="">..Select..</option>
+              <option value="2000000">Luxury Villa</option>
+              <!-- <option value="2500000">Penthouse</option> -->
+              <option value="5000000">Apartment</option>
+            </select>
+            <span style="color: #ff0000" class="error" id="errorVilla"></span>
+          </div>
+
+          <!-- Location -->
+          <div>
+            <label for="">Location: </label>
+            <select
+              name=""
+              style="
+                width: 200px;
+                height: 40px;
+                border-radius: 10px;
+                margin-bottom: 8px;
+                border: none;
+                background-color: #f4f4f4;
+              "
+              id="location"
+            >
+              <option value="">..Select..</option>
+              <option value="Banglore">Banglore</option>
+              <option value="Hyderabad">Hyderabad</option>
+              <option value="Chennai">Chennai</option>
+            </select>
+            <span
+              style="color: #ff0000"
+              class="error"
+              id="errorLocation"
+            ></span>
+          </div>
+        </div>
+
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+          "
+        >
+          <h2>Select Apartment</h2>
+          <div class="property-card">
+            <img
+              src="https://www.gbdarchitects.com/wp-content/uploads/2013/09/Kiln-Apartments-1.jpg"
+              alt="Click to view options"
+              id="apartmentTrigger"
+            />
+          </div>
+
+          <div id="gallery"></div>
+          <div
+            id="details"
+            style="
+              opacity: 0;
+              width: 400px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-direction: column;
+            "
+          ></div>
+        </div>
+
+        <!-- Amount -->
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+          "
+        >
+          <div>
+            <label>Amount: </label>
+            <input
+              type="text"
+              placeholder="   Enter your amount"
+              style="
+                width: 200px;
+                height: 40px;
+                border-radius: 10px;
+                border: none;
+                background-color: #f4f4f4;
+              "
+              id="Amountsub"
+              disabled
+            />
+            <span style="color: #ff0000" class="error" id="errorTotalamount">
+            </span>
+          </div>
+
+          <!-- GST Amount -->
+          <div>
+            <label>GST (%): </label>
+            <input
+              type="number"
+              name=""
+              id="gstPercentage"
+              value="18"
+              oninput="updateTotal()"
+              placeholder="    Enter GST percentage"
+              style="
+                width: 200px;
+                height: 40px;
+                border-radius: 10px;
+                border: none;
+                background-color: #f4f4f4;
+              "
+            />
+          </div>
+          <!-- Discount -->
+          <div>
+            <label>Discount:</label>
+            <input
+              type="number"
+              name=""
+              id="inputdatadiscount"
+              placeholder="   "
+              style="
+                width: 200px;
+                height: 40px;
+                border-radius: 10px;
+                border: none;
+                background-color: #f4f4f4;
+              "
+            />
+          </div>
+
+          <!-- Amount+GST -->
+          <div>
+            <label>Amount + GST:</label>
+            <input
+              type="number"
+              name=""
+              id="amountgst"
+              placeholder="   The amount and gst is"
+              style="
+                width: 200px;
+                height: 40px;
+                border-radius: 10px;
+                border: none;
+                background-color: #f4f4f4;
+              "
+              disabled
+            />
+          </div>
+
+          <!-- Pay With -->
+          <div>
+            <label>Pay With: </label>
+            <select
+              name=""
+              id="payWith"
+              style="
+                width: 200px;
+                height: 40px;
+                border-radius: 10px;
+                border: none;
+                background-color: #f4f4f4;
+              "
+              onchange="showPaymentFields()"
+            >
+              <option value="">..Select..</option>
+              <option value="cash">Cash</option>
+              <option value="upi">UPI</option>
+              <option value="card">Card</option>
+              <option value="emi">EMI</option>
+              <option value="bank">Bank</option>
+            </select>
+            <span style="color: #ff0000" class="error" id="errorPaywith">
+            </span>
+          </div>
+        </div>
+
+        <!-- Bank Fields -->
+
+        <div id="BankFields" class="hidden">
+          <h2 style="text-align: center; color: #f3553b">Bank</h2>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              margin-bottom: 40px;
+            "
+          >
+            <div class="form-group">
+              <label>Select Bank: </label>
+              <select
+                id="selectBank"
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+              >
+                <option value="">--Choose Bank--</option>
+                <option value="SBI">SBI</option>
+                <option value="HDFC">HDFC</option>
+                <option value="ICICI">ICICI</option>
+                <option value="AXISBANK">AXIS</option>
+                <option value="CANARA">CANARA</option>
+                <!-- Add more banks as needed -->
+              </select>
+              <div>
+                <span
+                  id="errorBankselect"
+                  style="color: red; font-size: 15px"
+                ></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>From Account Number:</label>
+              <input
+                type="text"
+                id="fromAccount"
+                maxlength="20"
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+              />
+              <div>
+                <span
+                  id="errorFromAccount"
+                  style="color: red; font-size: 15px"
+                ></span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              margin-bottom: 40px;
+            "
+          >
+            <div class="form-group">
+              <label>To Account Number:</label>
+              <input
+                type="text"
+                id="toAccount"
+                maxlength="20"
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+              />
+              <div>
+                <span
+                  id="errorToAccount"
+                  style="color: red; font-size: 15px"
+                ></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Re-enter Account Number:</label>
+              <input
+                type="text"
+                id="confirmAccount"
+                maxlength="20"
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+              />
+              <div>
+                <span
+                  id="errorConfirmAccount"
+                  style="color: red; font-size: 15px"
+                ></span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              margin-bottom: 40px;
+            "
+          >
+            <div class="form-group">
+              <label>Account Holder Name:</label>
+              <input
+                type="text"
+                id="accountHolder"
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+                oninput="this.value = this.value.toUpperCase()"
+              />
+              <div>
+                <span
+                  id="errorAccountHolder"
+                  style="color: red; font-size: 15px"
+                ></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>IFSC Code: </label>
+              <input
+                type="text"
+                id="ifscCode"
+                maxlength="11"
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+              />
+              <div>
+                <span id="errorIFSC" style="color: red; font-size: 15px"></span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              margin-bottom: 40px;
+            "
+          >
+            <div class="form-group">
+              <label>Date & Time:</label>
+              <input
+                type="datetime-local"
+                id="paymentDateTime"
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+              />
+              <div>
+                <span
+                  id="errorDateTime"
+                  style="color: red; font-size: 15px"
+                ></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Bank Remarks:</label>
+              <textarea
+                type="text"
+                id="accountPreview"
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                  font-weight: bold;
+                "
+                placeholder="Enter remarks here"
+              ></textarea>
+            </div>
+          </div>
+
+          <div
+            style="display: flex; flex-direction: row; justify-content: center"
+          >
+            <button
+              style="
+                width: 180px;
+                font-weight: bold;
+                height: 40px;
+                border: none;
+              "
+              class="submit"
+              onclick="validateBankDetails()"
+            >
+              Validate Bank Details
+            </button>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              align-items: center;
+              gap: 20px;
+              margin-top: 20px;
+            "
+          >
+            <button class="paymentbutton" onclick="validateBankDetails()">
+              Payment
+            </button>
+            <button class="cancelbutton">Cancel</button>
+          </div>
+
+          <!-- <button onclick="validateBankDetails()">Submit</button> -->
+        </div>
+
+        <!-- Cash Fields -->
+
+        <div id="cashFields" class="hidden">
+          <h2 style="text-align: center; color: #f3553b">Cash</h2>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              margin-bottom: 40px;
+            "
+          >
+            <div>
+              <label>Select Currency: </label>
+              <select
+                id="currencyType"
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+              >
+                <option value="INR">INR</option>
+                <option value="USD">USD</option>
+                <option value="AED">AED</option>
+                <option value="EURO">EURO</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Payable Amount: </label
+              ><input
+                type="number"
+                id="cashPayable"
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+                disabled
+              />
+            </div>
+          </div>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+            "
+          >
+            <div class="form-group">
+              <label>Collected Amount: </label
+              ><input
+                type="number"
+                id="cashCollected"
+                oninput="calculateReturn()"
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+              />
+              <span class="error" id="errorcashCollected"></span>
+            </div>
+
+            <div class="form-group">
+              <label>Return Amount: </label
+              ><input
+                type="text"
+                id="cashReturn"
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+                disabled
+              />
+            </div>
+          </div>
+          <div
+            style="
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              align-items: center;
+              gap: 20px;
+              margin-top: 20px;
+            "
+          >
+            <button class="paymentbutton">Payment</button>
+            <button class="cancelbutton">Cancel</button>
+          </div>
+        </div>
+
+        <!-- UPI Fields -->
+        <div id="upiFields" class="hidden">
+          <h2 style="text-align: center; color: #f3553b">UPI</h2>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              gap: 40px;
+            "
+          >
+            <div class="form-group">
+              <label>Payable Amount: </label
+              ><input
+                type="text"
+                id="upiPayable"
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+                disabled
+              />
+            </div>
+            <div class="form-group">
+              <label>UPI Number: </label
+              ><input
+                type="text"
+                id="UPINumber"
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+              />
+              <span
+                id="upierr"
+                style="color: red; font-size: 15px; text-align: center"
+                class="error"
+              ></span>
+            </div>
+
+            <div class="form-group" style="position: relative">
+              <label>Enter PIN: </label
+              ><input
+                type="password"
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+                id="UPIpin"
+              />
+
+              <i
+                id="toggleUPIpin"
+                class="fa-solid fa-eye-slash"
+                style="
+                  position: absolute;
+                  top: 13px;
+                  right: 5px;
+                  cursor: pointer;
+                  font-size: 18px;
+                  color: #444;
+                  background-color: #f4f4f4;
+                "
+              ></i>
+
+              <span
+                id="errUPIpin"
+                style="color: red; text-align: center"
+                class="error"
+              ></span>
+            </div>
+
+            <div
+              style="
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+                margin-top: 20px;
+              "
+            >
+              <button class="paymentbutton" onclick="upiValidation()">
+                Payment
+              </button>
+              <button class="cancelbutton">Cancel</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Fields -->
+        <div id="cardFields" class="hidden">
+          <h2 style="text-align: center; color: #f3553b">Card</h2>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              margin-bottom: 40px;
+            "
+          >
+            <div class="form-group">
+              <label>Payable Amount: </label
+              ><input
+                type="text"
+                id="cardPayable"
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+                disabled
+              />
+            </div>
+
+            <div>
+              <label for="cardType">Card Type:</label>
+              <select
+                id="cardType"
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+              >
+                <option value="">--Select Card Type--</option>
+                <option value="debit">Debit Card</option>
+                <option value="credit">Credit Card</option>
+              </select>
+              <div>
+                <span class="error" id="errorcardType"></span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              margin-bottom: 40px;
+            "
+          >
+            <div>
+              <div
+                style="
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: center;
+                  align-items: center;
+                "
+              >
+                <label for="cardBrand">Card Brand:</label>
+                <select
+                  id="cardBrand"
+                  style="
+                    width: 200px;
+                    height: 40px;
+                    border-radius: 10px;
+                    border: none;
+                    background-color: #f4f4f4;
+                  "
+                >
+                  <option value="">--Select Card Brand--</option>
+                  <option value="mastercard">MasterCard</option>
+                  <option value="digial">DigialCard</option>
+                  <option value="rupay">rupayCard</option>
+                  <option value="amex">AmexCard</option>
+                  <option value="prepaid">Prepaidcard</option>
+                </select>
+                <div
+                  id="cardImageContainer"
+                  style="margin-top: 10px; margin-left: 10px"
+                ></div>
+              </div>
+              <div>
+                <span class="error" id="errorcardBrand"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Card Number: </label
+              ><input
+                type="text"
+                placeholder="xxxx-xxxx-xxxx-xxx"
+                maxlength="19"
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+                id="debitCardnumber"
+              />
+
+              <span id="errordebitCardnumber" class="error"></span>
+            </div>
+          </div>
+
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              margin-bottom: 40px;
+            "
+          >
+            <div class="form-group">
+              <label>Card Holder Name: </label
+              ><input
+                type="text"
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+                id="debitCardholdername"
+                oninput="this.value = this.value.toUpperCase()"
+              />
+              <span id="errordebitCardholdername" class="error"></span>
+            </div>
+            <div class="form-group">
+              <label>CVV: </label
+              ><input
+                type="password"
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+                id="debitCardcvv"
+              />
+              <span id="errordebitCardcvv" class="error"></span>
+            </div>
+          </div>
+
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              margin-bottom: 40px;
+            "
+          >
+            <div class="form-group">
+              <label>Valid Until: </label
+              ><input
+                type="month"
+                id="expiryInput"
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+              /><br />
+              <span
+                id="errexpiryInput"
+                style="color: red; font-size: 15px"
+              ></span>
+            </div>
+
+            <div class="form-group">
+              <label>Enter PIN: </label
+              ><input
+                type="password"
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+                id="debitCardpin"
+              />
+              <span id="errordebitCardpin" class="error"></span>
+            </div>
+          </div>
+          <div
+            style="display: flex; flex-direction: row; justify-content: center"
+          >
+            <button
+              style="
+                width: 150px;
+                font-weight: bold;
+                height: 40px;
+                border: none;
+              "
+              class="submit"
+              onclick="debitcardValidation()"
+            >
+              Validate Card
+            </button>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              align-items: center;
+              gap: 20px;
+              margin-top: 20px;
+            "
+          >
+            <button class="paymentbutton" onclick="debitcardValidation()">
+              Payment
+            </button>
+            <button class="cancelbutton">Cancel</button>
+          </div>
+        </div>
+
+        <!-- EMI Fields -->
+
+        <div id="emiFields" class="hidden">
+          <h2 style="color: #f3553b; text-align: center">EMI</h2>
+
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              margin-bottom: 20px;
+            "
+          >
+            <div>
+              <label for="bankSelect">Select Bank: </label>
+              <select
+                id="bankSelect"
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+              >
+                <option value="">--Choose Bank--</option>
+                <option value="hdfc">HDFC</option>
+                <option value="sbi">SBI</option>
+                <option value="icici">ICICI</option>
+                <option value="axis">Axis</option>
+              </select>
+              <span id="errorBank" class="error"></span>
+            </div>
+            <div>
+              <label for="emiDuration">Select Duration: </label>
+              <select
+                id="emiDuration"
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+              >
+                <option value="">--Choose Duration--</option>
+                <option value="3">3 months (No cost)</option>
+                <option value="6">6 months (15% interest)</option>
+                <option value="12">12 months (16% interest)</option>
+                <option value="24">24 months (18% interest)</option>
+              </select>
+              <span id="errorEmi" class="error"></span>
+            </div>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+            "
+          >
+            <p>Total EMI Payable: ₹<span id="emiPayable">0.00</span></p>
+            <span id="errorEmitotal" class="error"></span>
+          </div>
+
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              margin-bottom: 40px;
+            "
+          >
+            <div>
+              <label>From Date:</label>
+              <input
+                type="date"
+                id="fromDate"
+                required
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+              />
+            </div>
+            <div>
+              <label>To Date:</label>
+              <input
+                type="date"
+                id="toDate"
+                required
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+              />
+              <div>
+                <span id="dateError" style="color: red; font-size: 14px"></span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              margin-bottom: 30px;
+            "
+          >
+            <div>
+              <label>Credit-Card Number:</label>
+              <input
+                type="text"
+                id="cardNumber"
+                placeholder="  xxxx-xxxx-xxxx-1234"
+                inputmode="numeric"
+                maxlength="19"
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+              />
+              <span id="errorCard" class="error"></span>
+            </div>
+
+            <div>
+              <label>CVV:</label>
+              <input
+                type="password"
+                id="cardCVV"
+                maxlength="3"
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+              />
+              <span id="errorCVV" class="error"></span>
+            </div>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              gap: 10px;
+              margin-bottom: 30px;
+            "
+          >
+            <label>Expiry: </label>
+            <input
+              type="month"
+              id="cardExpiry"
+              style="
+                width: 200px;
+                height: 40px;
+                border-radius: 10px;
+                border: none;
+                background-color: #f4f4f4;
+              "
+            />
+            <span id="errorExpiry" class="error"></span>
+          </div>
+
+          <div
+            style="display: flex; flex-direction: row; justify-content: center"
+          >
+            <button
+              style="
+                width: 100px;
+                font-weight: bold;
+                height: 40px;
+                border: none;
+              "
+              class="submit"
+              onclick="validateCard()"
+            >
+              Validate Card
+            </button>
+          </div>
+          <!-- <div>
+          <button onclick="validateCard()" style="border: none;
+               width: 150px;
+                height: 30px;
+                border-radius: 10px;
+                border: none;
+                background-color: #f4f4f4;">Validate Card</button>
+          </div> -->
+
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+            "
+          >
+            <div id="otpSection" class="hidden">
+              <p style="text-align: center">
+                OTP Sent To Mobile
+                <span
+                  id="shownumber"
+                  style="color: blue; font-weight: 500; font-size: 18px"
+                ></span>
+              </p>
+              <input
+                type="text"
+                id="otpInput"
+                maxlength="6"
+                style="
+                  width: 200px;
+                  height: 40px;
+                  border-radius: 10px;
+                  border: none;
+                  background-color: #f4f4f4;
+                "
+              />
+              <p
+                id="otpTimer"
+                style="
+                  text-align: start;
+                  font-size: 30px;
+                  font-weight: bold;
+                  color: navy;
+                "
+              ></p>
+
+              <button
+                style="
+                  width: 100px;
+                  font-weight: bold;
+                  height: 40px;
+                  border: none;
+                "
+                class="submit"
+                onclick="verifyOTP()"
+              >
+                Verify OTP
+              </button>
+              <button
+                style="
+                  width: 100px;
+                  font-weight: bold;
+                  height: 40px;
+                  border: none;
+                "
+                class="submit"
+                onclick="resendOTP()"
+              >
+                Resend OTP
+              </button>
+              <span id="errorOTP" class="error"></span>
+            </div>
+          </div>
+
+          <div id="loader" class="hidden">
+            <p>🔄 Processing Payment...</p>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              align-items: center;
+              gap: 20px;
+              margin-top: 20px;
+            "
+          >
+            <button class="paymentbutton">Payment</button>
+            <button class="cancelbutton">Cancel</button>
+          </div>
+        </div>
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+          "
+        >
+          <label>
+            <input type="checkbox" id="rbiConsent" />
+            The all information is provided by me only with my interest
+          </label>
+          <span id="errorConsent" class="error"></span>
+        </div>
+
+        <!-- Submit -->
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 20px;
+          "
+        >
+          <button
+            style="width: 100px; font-weight: bold; height: 40px; border: none"
+            class="submit"
+            onclick="validateForm()"
+          >
+            Submit
+          </button>
+          <button
+            style="width: 150px; font-weight: bold; height: 40px; border: none"
+            onclick="validateForm()"
+            class="submit"
+          >
+            Submit & Print
+          </button>
+        </div>
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+          "
+        >
+          <button
+            style="width: 150px; font-weight: bold; height: 40px; border: none"
+            class="submit"
+            onclick="generateInvoice(index)"
+          >
+            Generate Invoice
+          </button>
+        </div>
+      </div>
+    </div>
+    <div style="background-color: #000000; padding: 30px">
+      <p style="color: #ffffff; text-align: center">
+        Copyright © 2048 Villa Agency Co., Ltd. All rights reserved. Design:
+        <a href="" style="text-decoration: none; color: #ffffff">TemplateMo</a>
+      </p>
+    </div>
+
+    <div id="loader-wrapper">
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <img
+          src="https://i.postimg.cc/6p8ncRS6/Villa-logo.png"
+          width="150px"
+          height="150px"
+          alt=""
+        />
+
+        <div class="loader" style="margin-top: -10px"></div>
+      </div>
+    </div>
+
+    <!-- Form validation -->
+    <script>
+      const conversionRates = {
+        INR: 1,
+        USD: 0.0116, // 1 INR = 0.0116 USD
+        AED: 0.0425, // 1 INR = 0.0425 AED
+        EURO: 0.01, // 1 INR = 0.0100 EURO
+      };
+
+      function validateBankDetails() {
+        let valid = true;
+
+        const bank = document.getElementById("selectBank").value;
+        const fromAccount = document.getElementById("fromAccount").value.trim();
+        const toAccount = document.getElementById("toAccount").value.trim();
+        const confirmAccount = document
+          .getElementById("confirmAccount")
+          .value.trim();
+        const ifsc = document.getElementById("ifscCode").value.trim();
+        const dateTime = document.getElementById("paymentDateTime").value;
+        const holder = document.getElementById("accountHolder").value.trim();
+
+        const error = (id, msg) => {
+          document.getElementById(id).textContent = msg;
+          valid = false;
+        };
+
+        if (!bank) {
+          error("errorBankselect", "*please choose the bank");
+        } else {
+          error("errorBankselect", " ");
+        }
+
+        if (!/^\d{10,20}$/.test(fromAccount)) {
+          error("errorFromAccount", "*Enter valid From Account (10-20 digits)");
+        } else {
+          error("errorFromAccount", "");
+        }
+
+        if (!/^\d{10,20}$/.test(toAccount)) {
+          error("errorToAccount", "*Enter valid To Account");
+        } else {
+          error("errorToAccount", "");
+        }
+
+        if (confirmAccount !== toAccount) {
+          error("errorConfirmAccount", "*Account numbers do not match");
+        } else {
+          error("errorConfirmAccount", "");
+        }
+
+        if (!/^[A-Z]{4}0[A-Z0-9]{6}$/.test(ifsc)) {
+          error("errorIFSC", "Invalid IFSC format");
+        } else {
+          error("errorIFSC", "");
+        }
+
+        if (!dateTime) {
+          error("errorDateTime", "*Please select date and time");
+        } else {
+          error("errorDateTime", "");
+        }
+
+        if (!/^[A-Za-z ]{2,}$/.test(holder)) {
+          error("errorAccountHolder", "*Enter valid account holder name");
+        } else {
+          error("errorAccountHolder", " ");
+        }
+
+        if (valid) {
+          const preview =
+            fromAccount.slice(0, 4) + "xxxxxxx" + fromAccount.slice(-4);
+          document.getElementById("accountPreview").value = preview;
+        }
+      }
+
+      document
+        .getElementById("toggleUPIpin")
+        .addEventListener("click", function () {
+          const pinInput = document.getElementById("UPIpin");
+          const isHidden = pinInput.type === "password";
+
+          pinInput.type = isHidden ? "text" : "password";
+
+          // Swap icon class
+          this.classList.toggle("fa-eye");
+          this.classList.toggle("fa-eye-slash");
+        });
+
+      const brandLogos = {
+        mastercard:
+          "https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg",
+        digial:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfHoBij9hMVLcNJDiCKlcx2DOXr6e11n1B5g&s",
+        // amex: "https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo_%282018%29.svg",
+        amex: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/American_Express_logo_%282018%29.svg/1200px-American_Express_logo_%282018%29.svg.png",
+        prepaid:
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/FidorBank_Debit_MasterCard_%28cropped%29.jpg/640px-FidorBank_Debit_MasterCard_%28cropped%29.jpg",
+        rupay: "https://upload.wikimedia.org/wikipedia/commons/d/d1/RuPay.svg",
+      };
+
+      document
+        .getElementById("cardBrand")
+        .addEventListener("change", function () {
+          const brand = this.value;
+          const container = document.getElementById("cardImageContainer");
+          container.innerHTML = brandLogos[brand]
+            ? `<img src="${brandLogos[brand]}" alt="${brand} logo" width="60">`
+            : "";
+        });
+
+      /*   function updatePrice() {
+                 const price = document.getElementById("villaSelect").value;
+                 document.getElementById("amount").value = price;
+                 updateTotal();
+               } */
+
+      function updatePrice() {
+        const rawPrice = parseFloat(
+          document.getElementById("villaSelect").value
+        );
+        const formattedPrice = rawPrice.toLocaleString("en-IN", {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        });
+
+        document.getElementById("Amountsub").value = formattedPrice;
+        updateTotal();
+      }
+
+      let currentConvertedAmount = 0; // Global tracker
+      let totalINR = 0;
+
+      function updateTotal() {
+        let discount =
+          parseFloat(document.getElementById("inputdatadiscount").value) || 0;
+
+        let price = parseFloat(
+          document.getElementById("villaSelect").value || 0
+        );
+        if (price <= 0) {
+          price = parseFloat(document.getElementById("Amountsub").value);
+        }
+        const gst = parseFloat(
+          document.getElementById("gstPercentage").value || 0
+        );
+        // totalINR = price + (price * gst) / 100;
+        totalINR = price + (price * gst) / 100 - (price * discount) / 100;
+
+        const currency = document.getElementById("currencyType").value || "INR";
+        const rate = conversionRates[currency] || 1;
+        const convertedAmount = totalINR * rate;
+        currentConvertedAmount = convertedAmount; //Store for reuse
+
+        document.getElementById("amountgst").value = totalINR.toFixed(2);
+        document.getElementById("cashPayable").value =
+          convertedAmount.toFixed(2);
+        document.getElementById("upiPayable").value = totalINR.toFixed(2);
+        document.getElementById("cardPayable").value = totalINR.toFixed(2);
+      }
+
+      document
+        .getElementById("inputdatadiscount")
+        .addEventListener("input", function () {
+          updateTotal();
+        });
+
+      document
+        .getElementById("gstPercentage")
+        .addEventListener("input", function () {
+          updateTotal();
+        });
+
+      function calculateReturn() {
+        const collected = parseFloat(
+          document.getElementById("cashCollected").value || 0
+        );
+        const returnAmount = collected - currentConvertedAmount;
+
+        document.getElementById("cashReturn").value =
+          returnAmount >= 0 ? returnAmount.toFixed(2) : "0.00";
+      }
+
+      document
+        .getElementById("currencyType")
+        .addEventListener("change", function () {
+          updateTotal();
+          document.getElementById("cashCollected").value = "";
+          document.getElementById("cashReturn").value = "0.00";
+        });
+
+      function showPaymentFields() {
+        const mode = document.getElementById("payWith").value;
+        document
+          .getElementById("cashFields")
+          .classList.toggle("hidden", mode !== "cash");
+        document
+          .getElementById("upiFields")
+          .classList.toggle("hidden", mode !== "upi");
+        document
+          .getElementById("cardFields")
+          .classList.toggle("hidden", mode !== "card");
+        document
+          .getElementById("emiFields")
+          .classList.toggle("hidden", mode !== "emi");
+        document
+          .getElementById("BankFields")
+          .classList.toggle("hidden", mode !== "bank");
+      }
+
+      // emi part
+      let emiTotal = 0;
+      function updateEMIPayable() {
+        const duration = parseInt(document.getElementById("emiDuration").value);
+
+        let interestPercent = 0;
+
+        if (duration === 6) interestPercent = 15;
+        else if (duration === 12) interestPercent = 16;
+        else if (duration === 24) interestPercent = 18;
+        else interestPercent = 0;
+
+        const interestAmount = (totalINR * interestPercent) / 100;
+        emiTotal = totalINR + interestAmount;
+
+        document.getElementById("emiPayable").textContent = emiTotal.toFixed(2);
+      }
+      document
+        .getElementById("emiDuration")
+        .addEventListener("change", updateEMIPayable);
+      // credit card
+
+      // document
+      //            .getElementById("cardNumber")
+      //            .addEventListener("input", function () {
+      //              let value = this.value.replace(/[^0-9]/g, "").slice(0, 16);
+      //              this.value = value.replace(/(.{4})/g, "$1-").replace(/-$/, "");
+      //            });
+
+      const cardInput = document.getElementById("cardNumber");
+
+      cardInput.addEventListener("input", function () {
+        let raw = this.value.replace(/\D/g, "").slice(0, 16); // Only digits
+
+        let formatted = raw.replace(/(\d{4})(?=\d)/g, "$1-");
+        this.value = formatted;
+
+        if (raw.length === 16) {
+          let last4 = raw.slice(-4);
+          this.value = "xxxx-xxxx-xxxx-" + last4;
+        }
+      });
+
+      //   date validate
+
+      document.getElementById("toDate").addEventListener("blur", function () {
+        const from = new Date(document.getElementById("fromDate").value);
+        const to = new Date(this.value);
+        const error = document.getElementById("dateError");
+
+        if (isNaN(from.getTime()) || isNaN(to.getTime())) {
+          error.textContent = "Please enter both dates correctly.";
+        } else if (from > to) {
+          error.textContent = "To Date must be after From Date.";
+        } else {
+          error.textContent = "";
+        }
+      });
+
+      document
+        .getElementById("debitCardnumber")
+        .addEventListener("input", function () {
+          let value = this.value.replace(/[^0-9]/g, "").slice(0, 16);
+          this.value = value.replace(/(.{4})/g, "$1-").replace(/-$/, "");
+        });
+
+      //Debit and credit card validation
+      function debitcardValidation() {
+        const cardnum = document
+          .getElementById("debitCardnumber")
+          .value.replace(/-/g, "");
+        const dcvv = document.getElementById("debitCardcvv").value;
+        const dpin = document.getElementById("debitCardpin").value;
+        const dholdername = document.getElementById(
+          "debitCardholdername"
+        ).value;
+        const type = document.getElementById("cardType").value;
+        const brand = document.getElementById("cardBrand").value;
+        const validuntil = document.getElementById("expiryInput");
+
+        let dvalid = true;
+        if (!type) {
+          document.getElementById("errorcardType").textContent =
+            "*Please choose the cardtype ";
+          valid = false;
+        } else document.getElementById("errorcardType").textContent = "";
+
+        if (!brand) {
+          document.getElementById("errorcardBrand").textContent =
+            "*Please choose the cardbrand ";
+          valid = false;
+        } else document.getElementById("errorcardBrand").textContent = "";
+
+        if (cardnum.length !== 16 || !/^\d+$/.test(cardnum)) {
+          document.getElementById("errordebitCardnumber").textContent =
+            "*Enter 16-digit debit card number";
+          valid = false;
+        } else document.getElementById("errordebitCardnumber").textContent = "";
+
+        if (dcvv.length !== 3 || !/^\d+$/.test(dcvv)) {
+          document.getElementById("errordebitCardcvv").textContent =
+            "*Enter valid CVV";
+          valid = false;
+        } else document.getElementById("errordebitCardcvv").textContent = "";
+
+        if (dpin.length !== 3 || !/^\d+$/.test(dpin)) {
+          document.getElementById("errordebitCardpin").textContent =
+            "*Enter valid pin";
+          valid = false;
+        } else document.getElementById("errordebitCardpin").textContent = "";
+
+        const dname = dholdername.toUpperCase();
+        if (!dholdername) {
+          document.getElementById("errordebitCardholdername").textContent =
+            "*Enter the name";
+          valid = false;
+          if (dholdername !== dname) {
+            document.getElementById("errordebitCardholdername").textContent =
+              "*Enter name in uppercase";
+            valid = false;
+          }
+        } else
+          document.getElementById("errordebitCardholdername").textContent = "";
+
+        if (validuntil) {
+          const inputValue = validuntil.value.trim();
+          const selected = inputValue;
+          const today = new Date();
+          const current =
+            today.getFullYear() +
+            "-" +
+            String(today.getMonth() + 1).padStart(2, "0");
+
+          if (selected < current) {
+            document.getElementById("errexpiryInput").textContent =
+              "*Card expiry date cannot be in the past.";
+            valid = false;
+          } else {
+            document.getElementById("errexpiryInput").textContent = "";
+          }
+        }
+      }
+
+      function upiValidation() {
+        const upinum = document.getElementById("UPINumber").value.trim();
+        const upin = document.getElementById("UPIpin").value.trim();
+
+        if (upinum != /^[a-zA-Z0-9]+@[a-zA-Z0-9]+$/) {
+          document.getElementById("upierr").textContent = "*Enter Upi number";
+          valid = false;
+        } else {
+          document.getElementById("errupi").textContent = "";
+        }
+
+        if (upin != /^[0-9]+$/ && (upin.length > 4 || upin.length < 4)) {
+          document.getElementById("errUPIpin").textContent =
+            "*Enter upi pin 3digits ";
+          valid = false;
+        } else {
+          document.getElementById("errUPIpin").textContent = "";
+        }
+      }
+      // card validtion
+      function validateCard() {
+        const card = document
+          .getElementById("cardNumber")
+          .value.replace(/-/g, "");
+        const cvv = document.getElementById("cardCVV").value;
+        const expiry = document.getElementById("cardExpiry").value;
+
+        let valid = true;
+
+        const selected = document.getElementById("bankSelect").value;
+        const emiDuration = parseInt(
+          document.getElementById("emiDuration").value
+        );
+
+        if (emiTotal <= 0) {
+          document.getElementById("errorEmitotal").textContent =
+            " *Amount can't be zero ";
+          valid = false;
+        } else document.getElementById("errorEmitotal").textContent = "";
+
+        if (!selected) {
+          document.getElementById("errorBank").textContent =
+            "*Please choose the bank ";
+          valid = false;
+        } else document.getElementById("errorBank").textContent = "";
+        if (!emiDuration) {
+          document.getElementById("errorEmi").textContent =
+            "*Please choose the  Emi duration ";
+          valid = false;
+        } else document.getElementById("errorEmi").textContent = "";
+
+        if (card.length != 16) {
+          document.getElementById("errorCard").textContent =
+            "*Enter 16-digit card";
+          valid = false;
+        } else document.getElementById("errorCard").textContent = "";
+
+        if (cvv.length !== 3 || !/^\d+$/.test(cvv)) {
+          document.getElementById("errorCVV").textContent = "Enter valid CVV";
+          valid = false;
+        } else document.getElementById("errorCVV").textContent = "";
+
+        const today = new Date();
+        expiry1 = document.getElementById("cardExpiry").value;
+
+        if (!expiry1) {
+          document.getElementById("errorExpiry").textContent =
+            "*Expiry date required.";
+          valid = false;
+        } else {
+          const [expYear, expMonth] = expiry1.split("-").map(Number);
+          const currentYear = today.getFullYear();
+          const currentMonth = today.getMonth() + 1; // Month is 0-indexed
+
+          if (
+            expYear < currentYear ||
+            (expYear === currentYear && expMonth < currentMonth)
+          ) {
+            document.getElementById("errorExpiry").textContent =
+              "*Invalid expiry — card is expired.";
+            valid = false;
+          } else {
+            document.getElementById("errorExpiry").textContent = "";
+          }
+        }
+
+        if (valid) {
+          startOTPFlow();
+        }
+      }
+
+      let otpGenerated = "";
+      let otpTimerId;
+      let otpExpired = false;
+
+      // otp timer
+      function startOTPFlow() {
+        otpGenerated = String(Math.floor(100000 + Math.random() * 900000));
+        alert("Your OTP is: " + otpGenerated);
+
+        otpExpired = false; // Reset flag
+        document.getElementById("otpSection").classList.remove("hidden");
+        document.getElementById("otpTimer").textContent =
+          " You have 60 seconds";
+
+        let timeLeft = 60;
+        clearInterval(otpTimerId); // Clear any existing timer
+        let shownumber = document.getElementById("mobile").value;
+        document.getElementById("shownumber").innerHTML = `+(91)XXXX${String(
+          shownumber.slice(6)
+        )}`;
+
+        otpTimerId = setInterval(() => {
+          timeLeft--;
+          document.getElementById("otpTimer").textContent = ` ${timeLeft}s`;
+
+          if (timeLeft <= 0) {
+            clearInterval(otpTimerId);
+            otpExpired = true;
+            document.getElementById("otpTimer").innerHTML =
+              '<span style="font-size: 18px; font-weight: 500;    text-align: center;">OTP expired Resend OTP</span>';
+          }
+        }, 1000);
+      }
+
+      function verifyOTP() {
+        const enteredOTP = document.getElementById("otpInput").value;
+
+        if (otpExpired) {
+          document.getElementById("errorOTP").textContent =
+            " OTP expired. Please resend OTP.";
+          return;
+        }
+
+        if (enteredOTP === otpGenerated) {
+          document.getElementById("errorOTP").textContent = "";
+          document.getElementById("loader").classList.remove("hidden");
+
+          setTimeout(() => {
+            document.getElementById("loader").classList.add("hidden");
+            alert(" Payment Done!");
+          }, 3000); // 3-second loader
+          clearInterval(otpTimerId);
+        } else {
+          document.getElementById("errorOTP").textContent = "Incorrect OTP";
+        }
+      }
+
+      function resendOTP() {
+        clearInterval(otpTimerId);
+        startOTPFlow();
+        document.getElementById("otpInput").value = "";
+      }
+
+      function validateForm() {
+        let valid = true;
+
+        const fields = [
+          {
+            id: "firstName",
+            errorId: "errorFirstName",
+            message: "*Firstname is required",
+          },
+          {
+            id: "lastName",
+            errorId: "errorLastname",
+            message: "*Last name is required",
+          },
+          {
+            id: "mobile",
+            errorId: "errorMobile",
+            message: "*Phone number is required",
+          },
+          { id: "email", errorId: "errorEmail", message: "*Email is required" },
+          {
+            id: "villaSelect",
+            errorId: "errorVilla",
+            message: "*please select the any villa",
+          },
+          {
+            id: "location",
+            errorId: "errorLocation",
+            message: "*please select the location",
+          },
+          {
+            id: "payWith",
+            errorId: "errorPaywith",
+            message: "*Choose a payment mode",
+          },
+          {
+            id: "cashCollected",
+            errorId: "errorcashCollected",
+            message: "*Entered amount less then payable...!!",
+          },
+          // {
+          //   id: "UPINumber",
+          //   errorId: "upierr",
+          //   message: "*enter proper upiid",
+          // },
+          // {
+          //   id: "expiryInput",
+          //   errorId: "errexpiryInput",
+          //   message: "*Card expiry date cannot be in the past.",
+          // },
+          // {
+          //   id: "UPIpin",
+          //   errorId: "errUPIpin",
+          //   message: " *Upi pin 4 or 6 digits",
+          // },
+          {
+            id: "bankSelect",
+            errorId: "errorBank",
+            message: "*Choose your bank",
+          },
+          {
+            id: "emiDuration",
+            errorId: "errorEmi",
+            message: "*Select EMI duration",
+          },
+        ];
+
+        const cashpayableamount = parseFloat(
+          document.getElementById("cashPayable").value || "0"
+        );
+
+        // CHECKBOX
+        const consent = document.getElementById("rbiConsent").checked;
+
+        if (!consent) {
+          document.getElementById("errorConsent").textContent =
+            "*Please click the button if you accept";
+          valid = false;
+        } else document.getElementById("errorConsent").textContent = "";
+
+        fields.forEach((f) => {
+          const input = document.getElementById(f.id);
+          const error = document.getElementById(f.errorId);
+          if (!input.value.trim()) {
+            error.textContent = f.message;
+            valid = false;
+          } else {
+            error.textContent = "";
+          }
+
+          if (f.id == "cashCollected") {
+            if (cashpayableamount > input.value) {
+              error.textContent = f.message;
+              valid = false;
+            }
+          }
+          // Regular expression for first and last name
+
+          if (f.id === "firstName" || f.id === "lastName") {
+            const inputValue = input.value.trim();
+            const testname = /^[A-Za-z]+$/.test(inputValue);
+
+            if (!testname) {
+              error.textContent = "*Please enter a proper name";
+              valid = false;
+            }
+          }
+
+          // validation for mobile number
+
+          if (f.id == "mobile") {
+            const inputValue = input.value.trim();
+            const testname = /^[0-9]+$/.test(inputValue);
+
+            if (!testname) {
+              error.textContent = "*Please enter a proper number";
+              valid = false;
+            }
+            if (inputValue.length < 10 || inputValue.length > 10) {
+              error.textContent = "*Please enter a 10 digit number";
+              valid = false;
+            }
+          }
+
+          // email validation
+          if (f.id == "email") {
+            const inputValue = input.value.trim();
+            const testname = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inputValue);
+
+            if (!testname) {
+              error.textContent = "*Please enter a proper Email";
+              valid = false;
+            }
+          }
+
+          if (f.id == "expiryInput") {
+            const inputValue = input.value.trim();
+
+            const selected = inputValue;
+            const today = new Date();
+            const current =
+              today.getFullYear() +
+              "-" +
+              String(today.getMonth() + 1).padStart(2, "0");
+
+            if (selected < current) {
+              error.textContent = f.message;
+            } else {
+              error.textContent = "";
+            }
+          }
+
+          if (f.id == "UPINumber") {
+            const inputValue = input.value.trim();
+            const testname = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+$/.test(inputValue);
+            if (!testname) {
+              error.textContent = f.message;
+              valid = false;
+            }
+          }
+
+          if (f.id == "UPIpin") {
+            const inputValue = input.value.trim();
+            const testname = /^[0-9]+$/.test(inputValue);
+
+            if (!testname) {
+              error.textContent = " *PIN in Number formate";
+              valid = false;
+            }
+            if (inputValue.length > 4 || inputValue.length < 4) {
+              valid = false;
+              error.textContent = f.message;
+            }
+          }
+        });
+
+        if (valid) {
+          window.print();
+        }
+      }
+
+      /* const flatsData = [
+             {
+               name: "Flat A101",
+               id: "FL-A101",
+               seller: "9876543210",
+               bhk: "2BHK",
+               furnished: "Semi-furnished",
+               price: "₹52 Lakhs",
+               rating: "⭐⭐⭐⭐",
+             },
+             {
+               name: "Flat B201",
+               id: "FL-B201",
+               seller: "9123456789",
+               bhk: "3BHK",
+               furnished: "Fully-furnished",
+               price: "₹75 Lakhs",
+               rating: "⭐⭐⭐⭐⭐",
+             },
+             // Add more mock flats here...
+           ];
+           document.querySelectorAll(".property-card").forEach((card) => {
+             card.addEventListener("click", () => {
+               document
+                 .querySelectorAll(".property-card")
+                 .forEach((c) => c.classList.remove("selected"));
+               card.classList.add("selected");
+
+               document.getElementById("floorSection").style.display = "block";
+               populateDropdown("floorSelect", 10);
+             });
+           });
+
+           document.getElementById("floorSelect").addEventListener("change", () => {
+             document.getElementById("flatSection").style.display = "block";
+             populateDropdown("flatCountSelect", 20);
+           });
+
+           document
+             .getElementById("flatCountSelect")
+             .addEventListener("change", () => {
+               const count = parseInt(
+                 document.getElementById("flatCountSelect").value
+               );
+               const gallery = document.getElementById("flatGallery");
+               gallery.innerHTML = "";
+               for (let i = 0; i < count; i++) {
+                 const img = document.createElement("img");
+                 img.src =
+                   "https://tse1.mm.bing.net/th/id/OIP.IpB5yPUkCFHOzlmM-O7ncAHaFW?rs=1&pid=ImgDetMain&o=7&rm=3"; // use unique images if needed
+                 img.dataset.index = i;
+                 img.addEventListener("click", () => {
+                   showFlatDetails(flatsData[i % flatsData.length]);
+                 });
+                 gallery.appendChild(img);
+               }
+             });
+
+           function populateDropdown(id, count) {
+             const select = document.getElementById(id);
+             select.innerHTML = "";
+             for (let i = 1; i <= count; i++) {
+               const option = document.createElement("option");
+               option.value = i;
+               option.textContent = `${i}`;
+               select.appendChild(option);
+             }
+           }
+
+           function showFlatDetails(flat) {
+             const details = document.getElementById("flatDetails");
+             details.innerHTML = `
+             <p><strong>Flat Name:</strong> ${flat.name}</p>
+             <p><strong>Flat ID:</strong> ${flat.id}</p>
+             <p><strong>Seller:</strong> ${flat.seller}</p>
+             <p><strong>BHK:</strong> ${flat.bhk}</p>
+             <p><strong>Furnishing:</strong> ${flat.furnished}</p>
+             <p><strong>Price:</strong> ${flat.price}</p>
+             <p><strong>Rating:</strong> ${flat.rating}</p>
+           `;
+             document.getElementById("flatDetailsSection").style.display = "block";
+           }
+
+           document
+             .getElementById("visitBtn")
+             .addEventListener("click", generateInvoice);
+
+           async function generateInvoice() {
+             const { jsPDF } = window.jspdf;
+             const doc = new jsPDF();
+
+             // const buyerName = document.getElementById("buyerName").value;
+             // const buyerSignature = document.getElementById("buyerSignature").value;
+             //      Buyer Name: ${buyerName}
+             // Buyer Signature: ${buyerSignature}
+
+             const flatDetails = document.getElementById("flatDetails").innerText;
+             const dateTime = new Date().toLocaleString();
+
+             const invoiceContent = `
+             Real Estate Invoice
+             -------------------------
+             Date & Time: ${dateTime}
+
+             ${flatDetails}
+             Seller Signature: ____c_____
+             Authorised Villa Partner Signature: ___________
+           `;
+
+             doc.setFont("helvetica", "bold");
+             doc.setFontSize(14);
+             doc.text(invoiceContent, 20, 30);
+
+             doc.setDrawColor(0, 128, 255);
+             doc.setLineWidth(1.5);
+             doc.line(20, 25, 180, 25); // Top border for design
+
+             doc.save("Property_Invoice.pdf");
+           } */
+
+      const apartments = [
+        {
+          id: "APT001",
+          name: "Skyline Heights",
+          rating: "⭐⭐⭐",
+          image:
+            "https://media.designcafe.com/wp-content/uploads/2024/03/08222237/cropped-wall-colour-combination.jpg",
+          bhk: "2BHK",
+
+          furnished: "Semi-furnished",
+          price: 2000000,
+          seller: "9888888888",
+          sellerName: "Mr. Ramesh",
+        },
+        {
+          id: "APT002",
+          name: "City Towers",
+          rating: "⭐⭐⭐⭐",
+          image:
+            "https://jumanji.livspace-cdn.com/magazine/wp-content/uploads/sites/2/2020/03/20031959/3-BHK-Flat-Interior-Design-Opening-Image.jpg",
+          bhk: "3BHK",
+          furnished: "Fully-furnished",
+          price: 2500000,
+          seller: "9899999999",
+          sellerName: "Ms. Priya",
+        },
+        {
+          id: "APT003",
+          name: "Green Residency",
+          rating: "⭐⭐",
+          image:
+            "https://tse1.mm.bing.net/th/id/OIP.KSmFPE6SclTwPzjxvoR64QHaEK?rs=1&pid=ImgDetMain&o=7&rm=3",
+          bhk: "2BHK",
+          furnished: "Unfurnished",
+          price: 2800000,
+          seller: "9877777777",
+          sellerName: "Mr. Ahmed",
+        },
+      ];
+      let index = 0;
+
+      document
+        .getElementById("apartmentTrigger")
+        .addEventListener("click", () => {
+          const gallery = document.getElementById("gallery");
+          const details = document.getElementById("details");
+
+          gallery.innerHTML = "";
+
+          apartments.forEach((apt, index) => {
+            const img = document.createElement("img");
+            img.src = apt.image;
+            img.alt = apt.name;
+            img.onclick = () => {
+              showDetails(index);
+              details.style.opacity = "1"; // Now triggered by clicking a gallery image
+            };
+            gallery.appendChild(img);
+          });
+        });
+      let visitorName = "";
+      let visitorplace = "";
+      let visitDate = new Date();
+      let visitTime = new Date();
+      function showDetails(index) {
+        const apt = apartments[index];
+        const details = document.getElementById("details");
+        visitorName = document.getElementById("firstName").value;
+        visitorplace = document.getElementById("location").value;
+        document.getElementById("Amountsub").value = apt.price;
+        updateTotal();
+        const imgSizeStyle =
+          apt.id === "APT001"
+            ? 'style="width:400px; height:300px; object-fit:cover;"'
+            : 'style="width:400px; height:300px; object-fit:cover;"';
+
+        details.innerHTML = `
+         <img src="${apt.image}" alt="${apt.name}" ${imgSizeStyle} />
+         <p><strong>Apartment Name:</strong> ${apt.name}</p>
+         <p><strong>Apartment ID:</strong> ${apt.id}</p>
+         <p><strong>Rating:</strong> ${apt.rating}</p>
+         <p><strong>BHK:</strong> ${apt.bhk}</p>
+         <p><strong>Furnished:</strong> ${apt.furnished}</p>
+         <p><strong>Price:</strong> ${apt.price}</p>
+         <p><strong>Seller Name:</strong> ${apt.sellerName}</p>
+         <p><strong>Seller Contact:</strong> ${apt.seller}</p>
+         <p><label>Visitor Name: </label>
+         <input type="text" style="
+                width: 200px;
+                height: 30px;
+                border-radius: 10px;
+                margin-bottom: 8px;
+                border: none;
+                background-color: #f4f4f4;"
+                id="firstName1" placeholder="Name "  disabled /></p>
+            
+        <p><label >Visit Date:</label>
+        <input  style="
+                width: 200px;
+                height: 30px;
+                border-radius: 10px;
+                margin-bottom: 8px;
+                border: none;
+                background-color: #f4f4f4;" type="date" id="visitDate"  /></p>
+        <p><label>Visit Time:</label>
+        <input style="
+                width: 200px;
+                height: 30px;
+                border-radius: 10px;
+                margin-bottom: 8px;
+                border: none;
+                background-color: #f4f4f4;" type="time" id="visitTime" /></p>
+        <p><label>Visit Place:</label>
+        <input style="
+                width: 200px;
+                height: 30px;
+                border-radius: 10px;
+                margin-bottom: 8px;
+                border: none;
+                background-color: #f4f4f4;" type="text" id="location1" placeholder="Visit location"  disabled/></p>
+       
+
+`;
+        document.getElementById("firstName1").value = visitorName;
+        document.getElementById("location1").value = visitorplace;
+        // visitDate = document.getElementById("visitDate").value;
+        // visitTime = document.getElementById("visitTime").value;
+      }
+
+      function generateInvoice(index) {
+        const apt = apartments[index];
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        // const visitDate =
+        //   document.getElementById("visitDate").value || "Not specified";
+        // const visitTime =
+        //   document.getElementById("visitTime").value || "Not specified";
+        // const visitPlace =
+        //   document.getElementById("visitPlace").value || "Not specified";
+        // const root = document.getElementById("root").value || "Not specified";
+
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(16);
+        doc.text("Apartment Booking Invoice", 20, 20);
+
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(12);
+        doc.text(`------------------------------`, 20, 25);
+        doc.text(`Apartment ID: ${apt.id}`, 20, 35);
+        doc.text(`Name: ${apt.name}`, 20, 45);
+        doc.text(`BHK: ${apt.bhk}`, 20, 55);
+        doc.text(`Furnished: ${apt.furnished}`, 20, 65);
+        doc.text(`Price: ${apt.price}`, 20, 75);
+        doc.text(`Seller Name: ${apt.sellerName}`, 20, 85);
+        doc.text(`Seller Contact: ${apt.seller}`, 20, 95);
+        doc.text(`Rating: ${apt.rating}`, 20, 105);
+        doc.text(`Visitor Name: ${visitorName}`, 20, 115);
+        doc.text(`Visit Date: ${visitDate}`, 20, 125);
+        doc.text(`Visit Time: ${visitTime}`, 20, 135);
+        doc.text(`Visit Place: ${visitorplace}`, 20, 145);
+        // doc.text(Root: ${root}, 20, 155);
+
+        doc.text(`Buyer Signature: ___________________`, 20, 175);
+        doc.text(`Seller Signature: ___________________`, 20, 185);
+
+        doc.save(`${apt.name.replace(/\s+/g, "_")}_Invoice.pdf`);
+
+        // doc.save("Property_Invoice.pdf");
+      }
+    </script>
+    <script>
+      window.onload = function () {
+        setTimeout(function () {
+          document.getElementById("loader-wrapper").style.display = "none";
+          document.getElementById("content").classList.remove("hidden");
+        }, 3000);
+      };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  </body>
+</html>
